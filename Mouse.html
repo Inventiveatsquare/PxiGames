@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="pixi.min.js" ></script>
+</head>
+<body>
+  
+  <h1> start Pixi jssss </h1>
+
+    <script type="text/javascript">
+
+    // global contantss
+
+      let app;
+      let myElement;
+      let keys = {};
+
+      let screenwidth = 400;
+      let screenheight = 400;
+      
+
+      let texture = PIXI.Texture.from('small.png')
+
+
+
+      // my screen 
+
+      window.onload =function(){
+        app = new PIXI.Application({
+
+          width: screenwidth,
+          height: screenheight,
+          backgroundColor: 666666
+
+        })
+
+
+      document.body.appendChild(app.view)
+      
+
+      // my element
+
+      myElement = new PIXI.Sprite(texture)
+      myElement.x = app.view.width / 2;
+      myElement.y = app.view.height / 2;
+      myElement.anchor.set(0.5);
+
+
+      app.stage.addChild(myElement)
+      
+  
+      // mouse event 
+      app.stage.interactive = true;
+      app.stage.on('pointermove',moveMouse)
+
+
+     function moveMouse(e){
+         let position = e.data.global;
+
+         myElement.x = position.x;
+         myElement.y = position.y;
+
+     }
+
+
+      }
+
+
+      </script>
+
+</body>
+</html>

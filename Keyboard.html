@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="pixi.min.js" ></script>
+</head>
+<body>
+  
+  <h1> start Pixi jssss </h1>
+
+    <script type="text/javascript">
+
+    // global contantss
+
+      let app;
+      let myElement;
+      let keys = {};
+      let Keydiv ;
+
+      let screenwidth = 400;
+      let screenheight = 400;
+      
+
+      let texture = PIXI.Texture.from('small.png')
+
+
+
+      // my screen 
+
+      window.onload =function(){
+        app = new PIXI.Application({
+
+          width: screenwidth,
+          height: screenheight,
+          backgroundColor: 666666
+
+        })
+
+
+      document.body.appendChild(app.view)
+      
+
+      // my element
+
+      myElement = new PIXI.Sprite(texture)
+      myElement.x = app.view.width / 2;
+      myElement.y = app.view.height / 2;
+      myElement.anchor.set(0.5);
+
+
+      app.stage.addChild(myElement)
+      
+
+
+      // keyboard event ..
+
+      Keydiv = document.querySelector('#Keydiv');
+      
+
+      window.addEventListener("keyup", keysUp)
+      window.addEventListener("keydown", keysDown)
+
+
+      
+      function keysUp(e){
+        console.log(e.keyCode)
+        keys[e.keyCode] = false
+
+      }
+
+      function keysDown(e){
+        console.log(e.keyCode)
+        keys[e.keyCode] = true
+      }
+
+  
+
+
+      
+
+      function runchr( ){
+
+       // Keydiv.innerHTML = JSON.stringify(keys)
+
+        if(keys["40"]){
+          myElement.y += 5;
+        }
+
+        if(keys["38"]){
+          myElement.y -= 5;
+        }
+
+        if(keys["39"]){
+          myElement.x += 5;
+        }
+
+        if(keys["37"]){
+          myElement.x -= 5;
+        }
+  
+
+      
+      }
+
+      app.ticker.add(runchr);
+
+      // mouse event 
+
+      /// animation on click / start and stop 
+
+
+
+
+      
+     
+       
+
+      }
+
+
+      </script>
+
+      
+
+</body>
+</html>
